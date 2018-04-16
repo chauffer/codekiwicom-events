@@ -35,10 +35,9 @@ def root():
             description = component.get('description')
             if description:
                 description = re.sub('Tato událost.*\nPřipojit se.*', '', description).strip()
-
             events.append(
                 rfeed.Item(
-                    title=component.get('dtstart').dt.strftime('%D') + ' | ' + str(component.get('summary')),
+                    title=component.get('dtstart').dt.strftime('%e %B').strip() + ' | ' + str(component.get('summary')),
                     link=url,
                     description=str(component.get('description')),
                     guid=rfeed.Guid(url),
